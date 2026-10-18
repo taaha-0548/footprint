@@ -1,0 +1,27 @@
+# Starting defaults from PRD Section 7. The human may change them at Checkpoint A.
+dataset:
+  hf_repo: hao-li/AIDev          # confirm version with the human
+  revision: "<pinned-commit-hash>"
+filters:
+  language: Python
+  min_stars: 100
+  pr_states: [merged]
+  max_files_changed: 50
+split:
+  seed: 20261018
+  test_fraction: 0.3
+  pilot_size: 50
+git:
+  clone_filter: blob:none
+  clones_dir: data/clones
+github:
+  token_env: GITHUB_TOKEN
+  cache_dir: data/cache/github
+index:
+  exclude_dirs: [vendor, third_party, node_modules, build, dist, .venv, site-packages]
+predict:
+  k_values: [1, 3, 5, 10]
+  graph_hops: 1
+eval:
+  bootstrap_resamples: 1000
+  bootstrap_unit: repository
