@@ -1,12 +1,15 @@
 # Starting defaults from PRD Section 7. The human may change them at Checkpoint A.
 dataset:
   hf_repo: hao-li/AIDev          # confirm version with the human
-  revision: "<pinned-commit-hash>"
+  tag: v4
+  revision: "<resolve-from-tag-v4>"   # fill with exact commit hash (M1)
 filters:
   language: Python
   min_stars: 100
   pr_states: [merged]
   max_files_changed: 50
+  require_py_file_changed: true   # post-extraction filter; report count removed
+  size_buckets: [[1, 2], [3, 5], [6, 15], [16, 50]]
 split:
   seed: 20261018
   test_fraction: 0.3
